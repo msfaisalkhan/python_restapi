@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+{% block body %}
+ <div class="row"><h3>Employee</h3>
+</div><br>
+<div class="row">
+    {% with messages = get_flashed_messages()  %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      {{ message }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+</div>
+ <div class="row">
+    
+    <div class="col-md-3">
+        <a href="/new_user" class="btn btn-outline-success">Add New User</a>
+    </div>
+    <div class="col-md-6"></div>
+    <div class="col-md-3">
+        <a href="{{ url_for('download_report') }}" class="btn btn-outline-success">Generate CSV Report</a>
+    </div>
+    <div class="col-md-3">
+        
+    </div>
+</div> <br>
+  <div class="row">
+    <div class="col-md-12">
+        
+        
+      <table id="example" class="table table-striped" style="width:100%">
+        <thead>
+          <tr>
+            <td>UserID</td>
+            <td>Fullname</td>
+            <td>Email</td>
+            <td>Phone</td>
+            <td>Action</td>
+          </tr>
+        </thead>
+        <tbody>
+          {% for data in employee %}
+          <tr>
+   <td>{{data.id}}</td>
+            <td>{{data.name}}</td>
+            <td>{{data.email}}</td>
+            <td>{{data.phone}}</td>
+            <td width="130">
+              <a href="/edit/{{data.id}}" class="btn btn-secondary btn-sm">Edit</a>
+              <a href="/delete/{{data.id}}" class="btn btn-danger btn-delete btn-sm">Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+<!-- </div> -->
+ 
+{% endblock %}
