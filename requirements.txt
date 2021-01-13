@@ -42,6 +42,4 @@ lxml==4.4.2
 MarkupSafe==1.1.1
 Pillow==6.2.1
 PyMySQL==0.9.3
-pytz==2019.3
-six==1.13.0
 Werkzeug==0.16.0
